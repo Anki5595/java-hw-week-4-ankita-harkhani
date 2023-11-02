@@ -15,23 +15,29 @@ import java.util.Scanner;
 
 public class Programme_3_VowelOfConsonant {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); //scanner creation
-        System.out.println("Enter letter: "); // enter letter
-        char character = scanner.nextLine().charAt(0); // using char data type for entering letter
-        Programme_3_VowelOfConsonant obj = new Programme_3_VowelOfConsonant(); // calling instance method to main method via object
-        obj.checkLetter(character);
-        scanner.close(); //close scanner
-    }
+        Scanner scanner = new Scanner(System.in);
 
-    public void checkLetter(char character) {
-        if ((character >= 'a' && character <= 'z') || (character >= 'A' && character <= 'Z')) { // condition
-            if (character == 'a' || character == 'A' || character == 'e' || character == 'E' || character == 'i' || character == 'I' || character == 'o' || character == 'O' || character == 'u' || character == 'U') {
-                System.out.println("Input letter is Vowel"); // printing message for vowel letters
+        System.out.print("Input an alphabet: ");
+        String input = scanner.nextLine();
+        if (input.length() == 1) {
+            char character = input.charAt(0);
+            checkLetter(character);
+        } else {
+            System.out.println("Error: Please enter a single character.");
+        }
+        scanner.close();
+    }
+    public static void checkLetter(char character) {
+        if ((character >= 'a' && character <= 'z') || (character >= 'A' && character <= 'Z')) {
+            char lowercaseChar = Character.toLowerCase(character); // Convert to lowercase for easy comparison
+
+            if (lowercaseChar == 'a' || lowercaseChar == 'e' || lowercaseChar == 'i' || lowercaseChar == 'o' || lowercaseChar == 'u') {
+                System.out.println("Input letter is a Vowel");
             } else {
-                System.out.println("Error: Please enter a single character"); // error message if input is not a single character
+                System.out.println("Input letter is a Consonant");
             }
         } else {
-            System.out.println("Input letter is Consonant"); // printing message for consonant letter
+            System.out.println("Error: Please enter an alphabet letter.");
         }
     }
 }
